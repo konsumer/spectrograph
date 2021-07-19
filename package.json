@@ -10,7 +10,7 @@
   "scripts": {
     "build": "microbundle",
     "dev": "microbundle watch",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "microbundle": "latest"
@@ -38,5 +38,8 @@
   "bugs": {
     "url": "https://github.com/web-audio-components/spectrograph/issues"
   },
-  "homepage": "https://github.com/web-audio-components/spectrograph#readme"
+  "homepage": "https://github.com/web-audio-components/spectrograph#readme",
+  "dependencies": {
+    "color-interpolate": "^1.0.5"
+  }
 }

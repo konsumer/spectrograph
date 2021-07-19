@@ -1,5 +1,4 @@
-// TODO: this fails, does this also need to be published?
-import interpolate from "interpolate-color";
+import interpolate from "color-interpolate";
 
 export default function Spectrograph(context, opts) {
   // Defaults
@@ -40,8 +39,9 @@ function process(mod) {
   var range = (mod.range / ctx.sampleRate) * fft.length;
   var data = ctx.getImageData(0, 0, mod.w, mod.h);
   ctx.putImageData(data, -mod.speed, 0);
+  const colormap = interpolate([mod.minColor, mod.maxColor])
   for (var i = 0; i <= range; i++) {
-    ctx.fillStyle = interpolate(mod.minColor, mod.maxColor, fft[i] / 255);
+    ctx.fillStyle = colormap(fft[i] / 255);
     ctx.fillRect(
       mod.w - mod.speed,
       ~~(mod.h - (mod.h / range) * i),
